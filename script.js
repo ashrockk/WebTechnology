@@ -7,7 +7,7 @@ const password2 = document.getElementById("password2");
 // Function to show input error message
 function showError(input, message) {
   const formControl = input.parentElement;
-  formControl.classList.add("error");
+  formControl.className = "form-control error";
   const small = formControl.querySelector("small");
   small.innerText = message;
 }
@@ -15,16 +15,9 @@ function showError(input, message) {
 // Function to show success outline
 function showSuccess(input) {
   const formControl = input.parentElement;
-  formControl.classList.remove("error");
-  formControl.classList.add("success");
-}
-
-// Function to clear error message
-function clearError(input) {
-  const formControl = input.parentElement;
-  formControl.classList.remove("error");
+  formControl.className = "form-control success";
   const small = formControl.querySelector("small");
-  small.innerText = "";
+  small.innerText = ""; // Clear any error message
 }
 
 // Function to check if email is valid
@@ -34,7 +27,7 @@ function checkEmail(input) {
   if (re.test(input.value.trim())) {
     showSuccess(input);
   } else {
-    showError(input, "Please enter a valid email address");
+    showError(input, "Email is not valid");
   }
 }
 
@@ -47,7 +40,6 @@ function checkRequired(inputArr) {
       isRequired = true;
     } else {
       showSuccess(input);
-      clearError(input); // Clear error message on input change
     }
   });
 
@@ -68,7 +60,6 @@ function checkLength(input, min, max) {
     );
   } else {
     showSuccess(input);
-    clearError(input); // Clear error message on input change
   }
 }
 
@@ -76,6 +67,8 @@ function checkLength(input, min, max) {
 function checkPasswordsMatch(input1, input2) {
   if (input1.value !== input2.value) {
     showError(input2, "Passwords do not match");
+  } else {
+    showSuccess(input2);
   }
 }
 
@@ -94,7 +87,7 @@ form.addEventListener("submit", function (e) {
     checkEmail(email);
     checkPasswordsMatch(password, password2);
 
-    // If all checks are successful, you can proceed with redirection to success.html here
+    // If all checks are successful, redirect to success.html
     window.location.href = "success.html";
   }
 });
