@@ -87,7 +87,7 @@ form.addEventListener("submit", function (e) {
     checkEmail(email);
     checkPasswordsMatch(password, password2);
 
-    // If all checks are successful, redirect to success.html
+    // If all checks are successful, you can proceed with redirection to success.html here
     window.location.href = "success.html";
   }
 });
