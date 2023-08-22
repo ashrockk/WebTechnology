@@ -88,6 +88,7 @@ form.addEventListener("submit", function (e) {
     checkPasswordsMatch(password, password2);
 
     // If all checks are successful, you can proceed with redirection to success.html here
-    window.location.href = "success.html";
+    window.location.href =
+      "D:/HTML/Basics of HTML and CSS/form/WebTechnology/success.html";
   }
 });
